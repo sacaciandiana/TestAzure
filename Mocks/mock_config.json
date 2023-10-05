@@ -1,0 +1,8 @@
+{
+  "mockedWorkflows": [
+    {
+      "mockFilePath": "Mocks\\CalculateSum_mock.xaml",
+      "sourceWorkflowPath": "CalculateSum.xaml"
+    }
+  ]
+}
