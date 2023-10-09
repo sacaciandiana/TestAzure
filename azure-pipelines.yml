@@ -40,7 +40,7 @@ stages:
     - task: UiPathDeploy@4
       inputs:
         orchestratorConnection: 'DevopsService'
-        packagesPath: 'project.json'
+        packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
         folderName: 'Shared'
         traceLevel: 'Information'
 
