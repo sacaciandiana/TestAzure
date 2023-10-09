@@ -28,7 +28,7 @@ stages:
         orchestratorConnection: 'DevopsService'
         testProjectPath: 'project.json'
         folderName: 'Shared'
-        traceLevel: 'Information'
+        testReportDestination: '$(Build.ArtifactStagingDirectory)/Output'
 
 - stage: Deploy
   displayName: Deploy Package
