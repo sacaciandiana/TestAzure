@@ -1,0 +1,46 @@
+stages:
+- stage: Build
+  displayName: Build Package
+  jobs: 
+  - job: BuildPackage
+    pool:
+      name: Default
+    steps:
+    - task: UiPathPack@4
+      inputs:
+        versionType: 'AutoVersion'
+        projectJsonPath: 'project.json'
+        outputType: 'Process'
+        orchestratorConnection: 'DevopsService'
+        outputPath: '$(Build.ArtifactStagingDirectory)/Output'
+        traceLevel: 'Information'
+
+- stage: Test
+  displayName: Test Process
+  jobs: 
+  - job: TestProcess
+    pool:
+      name: Default
+    steps:
+    - task: UiPathTest@4
+      inputs:
+        testTarget: 'TestProject'
+        orchestratorConnection: 'DevopsService'
+        testProjectPath: 'project.json'
+        folderName: 'Shared'
+        traceLevel: 'Information'
+
+- stage: Deploy
+  displayName: Deploy Package
+  jobs: 
+  - job: DeployPackage
+    pool:
+      name: Default
+    steps:        
+    - task: UiPathDeploy@4
+      inputs:
+        orchestratorConnection: 'DevopsService'
+        packagesPath: 'project.json'
+        folderName: 'Shared'
+        traceLevel: 'Information'
+
