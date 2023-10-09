@@ -12,7 +12,7 @@ stages:
         projectJsonPath: 'project.json'
         outputType: 'Process'
         orchestratorConnection: 'DevopsService'
-        outputPath: '$(Build.ArtifactStagingDirectory)'
+        outputPath: 'C:\Users\DianaSacacian\Desktop\Test'
         traceLevel: 'Information'
 
 - stage: Test
@@ -28,7 +28,6 @@ stages:
         orchestratorConnection: 'DevopsService'
         testProjectPath: 'project.json'
         folderName: 'Shared'
-        testReportDestination: '$(Build.ArtifactStagingDirectory)'
 
 - stage: Deploy
   displayName: Deploy Package
@@ -40,7 +39,7 @@ stages:
     - task: UiPathDeploy@4
       inputs:
         orchestratorConnection: 'DevopsService'
-        packagesPath: '$(Build.ArtifactStagingDirectory)'
+        packagesPath: 'C:\Users\DianaSacacian\Desktop\Test'
         folderName: 'Shared'
         traceLevel: 'Information'
 
